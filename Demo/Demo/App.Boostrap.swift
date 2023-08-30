@@ -77,6 +77,8 @@ private struct IdentifiedStartupTask: StartupTaskModifier {
     }
 
     func task() async {
+        let randomDuration = Double.random(in: 0...0.01)
+        try? await Task.sleep(nanoseconds: UInt64(1_000_000_000 * randomDuration))
         print("Executing parallel task with ID \(self.id), in no particular order")
     }
 }
