@@ -37,6 +37,24 @@ public actor StartupTasksController: ObservableObject {
                 self.parallelTasks.removeAll(where: { $0.id == task.id })
             }
         }
+
+        //        await withTaskGroup(of: Void.self) { group in
+        //            for task in self.parallelTasks {
+        //                group.addTask {
+        //                    await task.action()
+        //                }
+        //            }
+        ////            for task in self.parallelTasks {
+        ////                await task.action()
+        ////            }
+        //        }
+
+        // This one goes one by one so we don't wanna do that
+
+        //        for task in self.parallelTasks {
+        //            await task.action()
+        //            self.parallelTasks.removeAll(where: { $0.id == task.id })
+        //        }
     }
 }
 

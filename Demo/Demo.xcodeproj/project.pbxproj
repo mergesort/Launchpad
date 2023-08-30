@@ -11,7 +11,7 @@
 		B7A2278E2A9EB52D00F477E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2278D2A9EB52D00F477E7 /* ContentView.swift */; };
 		B7A227902A9EB52F00F477E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A2278F2A9EB52F00F477E7 /* Assets.xcassets */; };
 		B7A227932A9EB52F00F477E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A227922A9EB52F00F477E7 /* Preview Assets.xcassets */; };
-		B7A2279C2A9EB5B200F477E7 /* Bootstrap in Frameworks */ = {isa = PBXBuildFile; productRef = B7A2279B2A9EB5B200F477E7 /* Bootstrap */; };
+		B7A227A32A9EDB6300F477E7 /* Startling in Frameworks */ = {isa = PBXBuildFile; productRef = B7A227A22A9EDB6300F477E7 /* Startling */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		B7A2278D2A9EB52D00F477E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7A2278F2A9EB52F00F477E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A227922A9EB52F00F477E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B7A227992A9EB5A200F477E7 /* Bootstrap */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Bootstrap; path = ../Sources/Bootstrap; sourceTree = "<group>"; };
+		B7A227A12A9EDB4800F477E7 /* Startling */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Startling; path = ../Sources/Startling; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7A2279C2A9EB5B200F477E7 /* Bootstrap in Frameworks */,
+				B7A227A32A9EDB6300F477E7 /* Startling in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,7 +38,7 @@
 		B7A2277F2A9EB52D00F477E7 = {
 			isa = PBXGroup;
 			children = (
-				B7A227992A9EB5A200F477E7 /* Bootstrap */,
+				B7A227A12A9EDB4800F477E7 /* Startling */,
 				B7A2278A2A9EB52D00F477E7 /* Demo */,
 				B7A227892A9EB52D00F477E7 /* Products */,
 				B7A2279A2A9EB5B200F477E7 /* Frameworks */,
@@ -96,7 +96,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				B7A2279B2A9EB5B200F477E7 /* Bootstrap */,
+				B7A227A22A9EDB6300F477E7 /* Startling */,
 			);
 			productName = Demo;
 			productReference = B7A227882A9EB52D00F477E7 /* Demo.app */;
@@ -365,9 +365,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B7A2279B2A9EB5B200F477E7 /* Bootstrap */ = {
+		B7A227A22A9EDB6300F477E7 /* Startling */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Bootstrap;
+			productName = Startling;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
