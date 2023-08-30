@@ -1,2 +1,2 @@
-# Bootstrap
-A better way to handle SwiftUI app launch
+# Startling
+A better way to start your SwiftUI app

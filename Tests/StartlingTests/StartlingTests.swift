@@ -1,5 +1,5 @@
 import XCTest
-@testable import Bootstrap
+@testable import Startling
 
 final class BootstrapTests: XCTestCase {
     func testExample() throws {

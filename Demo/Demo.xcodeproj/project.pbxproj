@@ -20,7 +20,7 @@
 		B7A2278D2A9EB52D00F477E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7A2278F2A9EB52F00F477E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A227922A9EB52F00F477E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B7A227A12A9EDB4800F477E7 /* Startling */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Startling; path = ../Sources/Startling; sourceTree = "<group>"; };
+		B7A227A72A9F8DE500F477E7 /* Startling */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Startling; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,7 @@
 		B7A2277F2A9EB52D00F477E7 = {
 			isa = PBXGroup;
 			children = (
-				B7A227A12A9EDB4800F477E7 /* Startling */,
+				B7A227A72A9F8DE500F477E7 /* Startling */,
 				B7A2278A2A9EB52D00F477E7 /* Demo */,
 				B7A227892A9EB52D00F477E7 /* Products */,
 				B7A2279A2A9EB5B200F477E7 /* Frameworks */,
