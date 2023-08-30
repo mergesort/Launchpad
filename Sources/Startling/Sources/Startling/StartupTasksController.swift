@@ -8,19 +8,13 @@ public actor StartupTasksController: ObservableObject {
 
     public func addOrderedTask(_ action: @escaping () async -> Void) async {
         self.orderedTasks.append(
-            StartupTask(
-                priority: self.parallelTasks.count + self.orderedTasks.count,
-                action: action
-            )
+            StartupTask(action: action)
         )
     }
 
     public func addParallelTask(_ action: @escaping () async -> Void) async {
         self.parallelTasks.append(
-            StartupTask(
-                priority: self.parallelTasks.count + self.orderedTasks.count,
-                action: action
-            )
+            StartupTask(action: action)
         )
     }
 
@@ -32,7 +26,7 @@ public actor StartupTasksController: ObservableObject {
             }
         }
 
-        for task in self.orderedTasks.sorted(by: { $0.priority < $1.priority }) {
+        for task in self.orderedTasks {
             await task.action()
         }
 
@@ -43,7 +37,6 @@ public actor StartupTasksController: ObservableObject {
 internal extension StartupTasksController {
     struct StartupTask: Identifiable {
         let id = UUID()
-        let priority: Int
         let action: () async -> Void
     }
 }
