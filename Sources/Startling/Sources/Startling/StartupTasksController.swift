@@ -25,12 +25,6 @@ public actor StartupTasksController: ObservableObject {
     }
 
     func runStartupTasks() async {
-        for task in self.orderedTasks.sorted(by: { $0.priority < $1.priority }) {
-            await task.action()
-        }
-
-        self.orderedTasks.removeAll()
-
         for task in self.parallelTasks {
             Task {
                 await task.action()
@@ -38,23 +32,11 @@ public actor StartupTasksController: ObservableObject {
             }
         }
 
-        //        await withTaskGroup(of: Void.self) { group in
-        //            for task in self.parallelTasks {
-        //                group.addTask {
-        //                    await task.action()
-        //                }
-        //            }
-        ////            for task in self.parallelTasks {
-        ////                await task.action()
-        ////            }
-        //        }
+        for task in self.orderedTasks.sorted(by: { $0.priority < $1.priority }) {
+            await task.action()
+        }
 
-        // This one goes one by one so we don't wanna do that
-
-        //        for task in self.parallelTasks {
-        //            await task.action()
-        //            self.parallelTasks.removeAll(where: { $0.id == task.id })
-        //        }
+        self.orderedTasks.removeAll()
     }
 }
 
