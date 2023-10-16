@@ -19,15 +19,15 @@ public actor StartupTasksController: ObservableObject {
     }
 
     func runStartupTasks() async {
+        for task in self.orderedTasks {
+            await task.action()
+        }
+
         for task in self.parallelTasks {
             Task {
                 await task.action()
                 self.parallelTasks.removeAll(where: { $0.id == task.id })
             }
-        }
-
-        for task in self.orderedTasks {
-            await task.action()
         }
 
         self.orderedTasks.removeAll()
