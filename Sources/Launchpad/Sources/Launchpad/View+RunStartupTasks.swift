@@ -1,69 +1,69 @@
 import SwiftUI
 
 public extension View {
-    func runStartupTasks() -> some View {
-        self.modifier(RunStartupTasksModifier())
+    func liftoff() -> some View {
+        self.modifier(RunLaunchTasksModifier())
     }
 
     // MARK: StartupTaskModifier Combinations
 
-    func addStartupTask(_ task: some StartupTaskModifier) -> some View {
+    func addLaunchTask(_ task: some LaunchTaskModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some StartupTaskModifier & OnChangeHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some LaunchTaskModifier & OnChangeHandlingModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some StartupTaskModifier & OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some LaunchTaskModifier & OnReceiveHandlingModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some StartupTaskModifier & OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some LaunchTaskModifier & OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
         self.modifier(task)
     }
 
-    // MARK: OrderedStartupTaskModifier Combinations
+    // MARK: OrderedLaunchTaskModifier Combinations
 
-    func addStartupTask(_ task: some OrderedStartupTaskModifier) -> some View {
+    func addLaunchTask(_ task: some OrderedLaunchTaskModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some OrderedStartupTaskModifier & OnChangeHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some OrderedLaunchTaskModifier & OnChangeHandlingModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some OrderedStartupTaskModifier & OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some OrderedLaunchTaskModifier & OnReceiveHandlingModifier) -> some View {
         self.modifier(task)
     }
 
-    func addStartupTask(_ task: some OrderedStartupTaskModifier & OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ task: some OrderedLaunchTaskModifier & OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
         self.modifier(task)
     }
 
     // MARK: OnChange/OnReceive Combinations
 
-    func addStartupTask(_ handler: some OnChangeHandlingModifier) -> some View {
+    func addLaunchTask(_ handler: some OnChangeHandlingModifier) -> some View {
         self.modifier(handler)
     }
 
-    func addStartupTask(_ handler: some OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ handler: some OnReceiveHandlingModifier) -> some View {
         self.modifier(handler)
     }
 
-    func addStartupTask(_ handler: some OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
+    func addLaunchTask(_ handler: some OnChangeHandlingModifier & OnReceiveHandlingModifier) -> some View {
         self.modifier(handler)
     }
 }
 
 // MARK: RunStartupTasksModifier
 
-private struct RunStartupTasksModifier: ViewModifier {
-    @EnvironmentObject private var startupTasksModifier: StartupTasksController
+private struct RunLaunchTasksModifier: ViewModifier {
+    @EnvironmentObject private var launchController: LaunchController
 
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksModifier.runStartupTasks()
+            await self.launchController.launch()
         })
     }
 }

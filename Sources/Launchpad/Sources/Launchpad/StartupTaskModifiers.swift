@@ -1,15 +1,15 @@
 import SwiftUI
 
-public protocol StartupTaskModifier: ViewModifier {
-    var startupTasksController: StartupTasksController { get }
+public protocol LaunchTaskModifier: ViewModifier {
+    var launchController: LaunchController { get }
 
     @Sendable func task() async
 }
 
-public extension StartupTaskModifier {
+public extension LaunchTaskModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addParallelTask(self.task)
+            await self.launchController.addParallelTask(self.task)
         })
     }
 }

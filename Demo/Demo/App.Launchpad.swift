@@ -10,65 +10,64 @@ import SwiftUI
 // Ordered tasks run first, because their order matters. For example if you need to run a migration
 // before initializing your API, then those should be structured as ordered tasks.
 
-// Below Print1StartupTask, Print2StartupTask, and Print3StartupTask are ordered tasks
+// Below Print1LaunchTask, Print2LaunchTask, and Print3LaunchTask are ordered tasks
 // and they will execute in the order they are added.
 
-// IdentifiedStartupTask is a regular StartupTask with no order specified, those will execute
+// IdentifiedLaunchTask is a regular StartupTask with no order specified, those will execute
 // in parallel. This is useful when you need to do something on startup, but you can
 // fire and forget because there are no dependencies.
 
 @main
 struct LaunchpadDemoApp: App {
-    @StateObject private var startupTasksController = StartupTasksController()
+    @StateObject private var launchController = LaunchController()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .addStartupTask(Print1StartupTask())
-                .addStartupTask(IdentifiedStartupTask(id: 1))
-                .addStartupTask(IdentifiedStartupTask(id: 2))
-                .addStartupTask(IdentifiedStartupTask(id: 3))
-                .addStartupTask(IdentifiedStartupTask(id: 4))
-                .addStartupTask(IdentifiedStartupTask(id: 5))
-                .addStartupTask(IdentifiedStartupTask(id: 6))
-                .addStartupTask(IdentifiedStartupTask(id: 7))
-                .addStartupTask(IdentifiedStartupTask(id: 8))
-                .addStartupTask(IdentifiedStartupTask(id: 9))
-                .addStartupTask(Print2StartupTask())
-                .addStartupTask(Print3StartupTask())
-                .runStartupTasks()
-                .environmentObject(self.startupTasksController)
+                .addLaunchTask(Print1LaunchTask())
+                .addLaunchTask(IdentifiedLaunchTask(id: 1))
+                .addLaunchTask(IdentifiedLaunchTask(id: 2))
+                .addLaunchTask(IdentifiedLaunchTask(id: 3))
+                .addLaunchTask(IdentifiedLaunchTask(id: 4))
+                .addLaunchTask(IdentifiedLaunchTask(id: 5))
+                .addLaunchTask(IdentifiedLaunchTask(id: 6))
+                .addLaunchTask(IdentifiedLaunchTask(id: 7))
+                .addLaunchTask(IdentifiedLaunchTask(id: 8))
+                .addLaunchTask(IdentifiedLaunchTask(id: 9))
+                .addLaunchTask(Print2LaunchTask())
+                .addLaunchTask(Print3LaunchTask())
+                .liftoff()
+                .environmentObject(self.launchController)
         }
     }
 }
 
-private struct Print1StartupTask: OrderedStartupTaskModifier {
-    @EnvironmentObject var startupTasksController: StartupTasksController
+private struct Print1LaunchTask: OrderedLaunchTaskModifier {
+    @EnvironmentObject var launchController: LaunchController
 
     func task() async {
         print("Executing task 1")
     }
 }
 
-private struct Print2StartupTask: OrderedStartupTaskModifier {
-    @EnvironmentObject var startupTasksController: StartupTasksController
+private struct Print2LaunchTask: OrderedLaunchTaskModifier {
+    @EnvironmentObject var launchController: LaunchController
 
     func task() async {
         print("Executing task 2")
     }
 }
 
-private struct Print3StartupTask: OrderedStartupTaskModifier {
-//    @EnvironmentObject private var migrationsController: MigrationsController
-    @EnvironmentObject var startupTasksController: StartupTasksController
+private struct Print3LaunchTask: OrderedLaunchTaskModifier {
+    @EnvironmentObject var launchController: LaunchController
 
     func task() async {
         print("Executing task 3")
     }
 }
 
-private struct IdentifiedStartupTask: StartupTaskModifier {
-    @EnvironmentObject var startupTasksController: StartupTasksController
+private struct IdentifiedLaunchTask: LaunchTaskModifier {
+    @EnvironmentObject var launchController: LaunchController
 
     private let id: Int
 

@@ -1,15 +1,15 @@
 import SwiftUI
 
-public protocol OrderedStartupTaskModifier: ViewModifier {
-    var startupTasksController: StartupTasksController { get }
+public protocol OrderedLaunchTaskModifier: ViewModifier {
+    var launchController: LaunchController { get }
 
     func task() async
 }
 
-public extension OrderedStartupTaskModifier {
+public extension OrderedLaunchTaskModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addOrderedTask {
+            await self.launchController.addOrderedTask {
                 await self.task()
             }
         })

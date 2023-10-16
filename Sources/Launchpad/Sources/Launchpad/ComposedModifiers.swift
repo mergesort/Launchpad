@@ -1,11 +1,11 @@
 import SwiftUI
 
-// MARK: StartupTaskModifier Combinations
+// MARK: LaunchTaskModifier Combinations
 
-public extension StartupTaskModifier where Self: OnChangeHandlingModifier {
+public extension LaunchTaskModifier where Self: OnChangeHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addParallelTask {
+            await self.launchController.addParallelTask {
                 await self.task()
             }
         })
@@ -15,10 +15,10 @@ public extension StartupTaskModifier where Self: OnChangeHandlingModifier {
     }
 }
 
-public extension StartupTaskModifier where Self: OnReceiveHandlingModifier {
+public extension LaunchTaskModifier where Self: OnReceiveHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addParallelTask {
+            await self.launchController.addParallelTask {
                 await self.task()
             }
         })
@@ -28,10 +28,10 @@ public extension StartupTaskModifier where Self: OnReceiveHandlingModifier {
     }
 }
 
-public extension StartupTaskModifier where Self: OnReceiveHandlingModifier & OnChangeHandlingModifier {
+public extension LaunchTaskModifier where Self: OnReceiveHandlingModifier & OnChangeHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addParallelTask {
+            await self.launchController.addParallelTask {
                 await self.task()
             }
         })
@@ -44,12 +44,12 @@ public extension StartupTaskModifier where Self: OnReceiveHandlingModifier & OnC
     }
 }
 
-// MARK: OrderedStartupTaskModifier Combinations
+// MARK: OrderedLaunchTaskModifier Combinations
+public extension OrderedLaunchTaskModifier where Self: OnChangeHandlingModifier {
 
-public extension OrderedStartupTaskModifier where Self: OnChangeHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addOrderedTask {
+            await self.launchController.addOrderedTask {
                 await self.task()
             }
         })
@@ -59,10 +59,10 @@ public extension OrderedStartupTaskModifier where Self: OnChangeHandlingModifier
     }
 }
 
-public extension OrderedStartupTaskModifier where Self: OnReceiveHandlingModifier {
+public extension OrderedLaunchTaskModifier where Self: OnReceiveHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addOrderedTask {
+            await self.launchController.addOrderedTask {
                 await self.task()
             }
         })
@@ -72,10 +72,10 @@ public extension OrderedStartupTaskModifier where Self: OnReceiveHandlingModifie
     }
 }
 
-public extension OrderedStartupTaskModifier where Self: OnReceiveHandlingModifier & OnChangeHandlingModifier {
+public extension OrderedLaunchTaskModifier where Self: OnReceiveHandlingModifier & OnChangeHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
-            await self.startupTasksController.addOrderedTask {
+            await self.launchController.addOrderedTask {
                 await self.task()
             }
         })
