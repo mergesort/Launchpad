@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Startling",
+    name: "Launchpad",
     platforms: [
         .iOS(.v15),
         .macOS(.v12)
@@ -12,19 +12,19 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Startling",
-            targets: ["Startling"]
+            name: "Launchpad",
+            targets: ["Launchpad"]
         )
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Startling"
+            name: "Launchpad"
         ),
         .testTarget(
-            name: "StartlingTests",
-            dependencies: ["Startling"]
+            name: "LaunchpadTests",
+            dependencies: ["Launchpad"]
         )
     ]
 )

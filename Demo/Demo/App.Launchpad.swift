@@ -1,4 +1,4 @@
-import Startling
+import Launchpad
 import SwiftUI
 
 // These are very basic tasks to demonstrate a simple app structure.
@@ -18,7 +18,7 @@ import SwiftUI
 // fire and forget because there are no dependencies.
 
 @main
-struct BoostrapDemoApp: App {
+struct LaunchpadDemoApp: App {
     @StateObject private var startupTasksController = StartupTasksController()
 
     var body: some Scene {
