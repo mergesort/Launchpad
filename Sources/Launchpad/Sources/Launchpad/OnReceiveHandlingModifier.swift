@@ -7,13 +7,13 @@ public protocol OnReceiveHandlingModifier: ViewModifier {
 
     var publisher: PublishedValue { get }
 
-    @Sendable func onReceiveTask(value: PublisherSuccess)
+    func handleOnReceive(of value: PublisherSuccess)
 }
 
 public extension OnReceiveHandlingModifier {
     func body(content: Content) -> some View {
         content.onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }

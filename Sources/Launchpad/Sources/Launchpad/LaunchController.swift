@@ -4,7 +4,7 @@ public actor LaunchController: ObservableObject {
     var orderedTasks: [LaunchTask] = []
     var parallelTasks: [LaunchTask] = []
 
-    public init() { }
+    public init() {}
 
     public func addOrderedTask(_ action: @Sendable @escaping () async -> Void) async {
         self.orderedTasks.append(

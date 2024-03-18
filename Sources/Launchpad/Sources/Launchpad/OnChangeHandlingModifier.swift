@@ -5,13 +5,14 @@ public protocol OnChangeHandlingModifier: ViewModifier {
 
     var value: EquatableValue { get }
 
-    @Sendable func onChangeTask(value: EquatableValue)
+    func handleOnChange(of value: EquatableValue)
 }
 
 public extension OnChangeHandlingModifier {
+    @ViewBuilder
     func body(content: Content) -> some View {
         content.onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
     }
 }

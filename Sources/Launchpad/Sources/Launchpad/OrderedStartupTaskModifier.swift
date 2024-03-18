@@ -3,14 +3,14 @@ import SwiftUI
 public protocol OrderedLaunchTaskModifier: ViewModifier {
     var launchController: LaunchController { get }
 
-    func task() async
+    func onLaunch() async
 }
 
 public extension OrderedLaunchTaskModifier {
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addOrderedTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
     }

@@ -6,11 +6,11 @@ public extension LaunchTaskModifier where Self: OnChangeHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addParallelTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
     }
 }
@@ -19,11 +19,11 @@ public extension LaunchTaskModifier where Self: OnReceiveHandlingModifier {
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addParallelTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }
@@ -32,14 +32,14 @@ public extension LaunchTaskModifier where Self: OnReceiveHandlingModifier & OnCh
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addParallelTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
         .onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }
@@ -50,11 +50,11 @@ public extension OrderedLaunchTaskModifier where Self: OnChangeHandlingModifier 
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addOrderedTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
     }
 }
@@ -63,11 +63,11 @@ public extension OrderedLaunchTaskModifier where Self: OnReceiveHandlingModifier
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addOrderedTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }
@@ -76,14 +76,14 @@ public extension OrderedLaunchTaskModifier where Self: OnReceiveHandlingModifier
     func body(content: Content) -> some View {
         content.task({
             await self.launchController.addOrderedTask {
-                await self.task()
+                await self.onLaunch()
             }
         })
         .onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
         .onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }
@@ -93,10 +93,10 @@ public extension OrderedLaunchTaskModifier where Self: OnReceiveHandlingModifier
 public extension OnChangeHandlingModifier where Self: OnReceiveHandlingModifier {
     func body(content: Content) -> some View {
         content.onChange(of: self.value, perform: { value in
-            self.onChangeTask(value: value)
+            self.handleOnChange(of: value)
         })
         .onReceive(self.publisher, perform: { value in
-            self.onReceiveTask(value: value)
+            self.handleOnReceive(of: value)
         })
     }
 }
