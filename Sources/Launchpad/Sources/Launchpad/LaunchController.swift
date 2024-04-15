@@ -4,6 +4,8 @@ public actor LaunchController: ObservableObject {
     var orderedTasks: [LaunchTask] = []
     var parallelTasks: [LaunchTask] = []
 
+    var hasRunLaunchTasks = false
+
     public init() {}
 
     public func addOrderedTask(_ action: @Sendable @escaping () async -> Void) async {
@@ -19,6 +21,8 @@ public actor LaunchController: ObservableObject {
     }
 
     func launch() async {
+        guard !self.hasRunLaunchTasks else { return }
+
         for task in self.orderedTasks {
             await task.action()
         }
@@ -31,6 +35,7 @@ public actor LaunchController: ObservableObject {
         }
 
         self.orderedTasks.removeAll()
+        self.hasRunLaunchTasks = true
     }
 }
 
